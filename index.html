@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ma trận vuông</title>
+</head>
+<body>
+    <script>
+        
+            let size = +prompt("Nhập size ma trận: ");
+            matrix = generateMatrix(size);
+            console.log(matrix);
+        
+        function   generateMatrix(size){
+            let caro = [];
+            for (let i=0; i<size;i++) {
+                let arr = [];
+                for (let j=0;j<size;j++) {
+                    arr[j]=Math.floor(Math.random()*81+10);
+                }
+                caro.push(arr);
+            }
+            return caro;
+        }
+
+        function sumEven(matrix){
+            let sum =0;
+            for (let i=0; i<matrix.length;i++){
+                for (let j=0;j<matrix[i].length;j++){
+                    if (matrix[i][j] % 2 ==0) sum= sum+ matrix[i][j];
+                }
+            }
+            return sum;
+        }
+        
+
+        function sumMainCross(matrix){
+            let sum=0;
+            for (let i=0;i<matrix.length;i++){
+                let j=i;
+                sum = sum + matrix[i][j];
+            }
+            return sum;
+        }
+
+        function sumSubCross(matrix){
+            let sum=0;
+            for (let i= matrix.length;i>=0;i--){
+                let j=i;
+                sum = sum + matrix[i][j];
+            }
+        }
+
+        function sumBorder(matrix){
+            let sum=0;
+            for (let i=0;i<matrix.length;i++){
+                if (i==0 || i == matrix.length-1) {
+                    for (let j=0;j<matrix.length;j++){
+                        sum = sum + matrix[i][j];
+                    }
+                } else {
+                    sum = sum + matrix[i][0] + matrix[i][matrix.length-1];
+                }
+            }
+            return sum;
+        }
+
+        function upTri(matrix){
+            for (let i =1; i<matrix.length;i++){
+                for (let j=0;j<i;j++){
+                    matrix[i][j]="00";
+                }
+            }
+        }
+
+        function lowTri(matrix) {
+            for (let i= 0;i<matrix.length;i++){
+                for (let j=matrix.length-1;j>i;j--){
+                    matrix[i][j]="0"
+                }
+            }
+        }
+
+        
+
+
+
+        
+        
+        
+
+    </script>
+</body>
+</html>
