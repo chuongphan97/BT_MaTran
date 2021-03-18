@@ -48,7 +48,7 @@
         function sumSubCross(matrix){
             let sum=0;
             for (let i= matrix.length;i>=0;i--){
-                let j=i;
+                let j=matrix.length-1-i;
                 sum = sum + matrix[i][j];
             }
         }
